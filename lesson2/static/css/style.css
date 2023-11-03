@@ -1,0 +1,32 @@
+div {
+    background-color: burlywood;
+}
+.no_news {
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 24px;
+    color: #fff;
+    background-color: crimson;
+    text-align: center;
+}
+.news {
+    width: 600px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 24px;
+    color: #000;
+    background-color: rgb(110, 220, 224);
+}
+input, textarea {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+}
+input[type='submit'] {
+    background-color: aliceblue;
+}
+input[type='submit']:hover {
+    background-color: rgb(14, 14, 15);
+    color: #fff;
+}
