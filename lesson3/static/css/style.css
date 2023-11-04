@@ -1,0 +1,11 @@
+div {
+    padding: 10px;
+    background-color: rgb(0, 0, 83);
+    color: #fff;
+}
+.worker_plate {
+    width: 150px;
+    height: 150px;
+    background-color: wheat;
+    text-align: center;
+}
