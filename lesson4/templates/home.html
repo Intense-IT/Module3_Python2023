@@ -1,0 +1,37 @@
+<!-- Главная страница, содержащая форму -->
+
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <!-- Форма, генерируемая с использованием Flask-WTF -->
+    <form action="/" method="POST">
+        <!-- Генерация csrf-токена в форме -->
+        {{ form.hidden_tag() }}
+        <div class="form_block">
+            <!-- Каждое поле генерируется по имени, указанном в классе формы
+            Полю можно создать тег label, а также задать атрибуты 
+            через именованные аргументы, передаваемые при вызове. -->
+            {{ form.name.label(class='form_input_label') }}
+            {{ form.name(class='form_input') }}
+        </div>
+        <div class="form_block">
+            {{ form.email.label(class='form_input_label') }}
+            {{ form.email(class='form_input') }}
+            <!-- При необходимости можно вывести ошибки,
+            возникающие при заполнении поля формы -->
+            {% for error in form.email.errors %}
+                <div class="errors">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            
+        </div>
+        <div class="form_block">
+            {{ form.password.label(class='form_input_label') }}
+            {{ form.password(class='form_input') }}
+        </div>
+        <button type="submit" class="btn">Отправить</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+/* Стили приложения */
+
+.form_block {
+    margin: 5px;
+    padding: 10px;
+}
+.btn {
+    width: 200px;
+    height: 50px;
+    background-color: cadetblue;
+}
+.btn:hover {
+    background-color: rgb(38, 63, 63);
+    color: #fff;
+}
