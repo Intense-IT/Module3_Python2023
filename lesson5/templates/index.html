@@ -1,0 +1,22 @@
+<!-- Шаблон для отображения и формы добавления пользователей. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Все пользователи</h1>
+    <form action="/add_user" method="POST">
+        <input type="text" name="username">
+        <input type="submit" value="Отправить">
+    </form>
+    <ol>
+    {% for user in users %}
+        <li>{{ user.username }}</li>
+    {% endfor %}
+    </ol>
+    
+</body>
+</html>
