@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Все публикации</h1>
+    <form action="/posts" method="POST">
+        <input type="text" name="title">
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+        <input type="text" name="author">
+        <input type="submit" value="Отправить">
+    </form>
+    <ul>
+    {% for post in posts %}
+        <li>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.text }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
