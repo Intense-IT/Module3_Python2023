@@ -10,7 +10,7 @@ from config import app, db
 from models import User, Post
 
 # Инициализация Flask-Migrate в главном скрипте main.py
-# с Flask-приложением и экземпляром SQLAlchemy
+# с Flask-приложением и экземпляром SQLAlchemy.
 migrate = Migrate(app, db)
 
 

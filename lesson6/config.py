@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///my_db.db'
 
 # Метаданные именования различных контрукций в скриптах миграций.
-# Был добавлен, т.к. в ином случае возникала ошибка.
+# Были добавлены, т.к. в ином случае возникала ошибка.
 metadata = MetaData(
     naming_convention={
         "ix": 'ix_%(column_0_label)s',
