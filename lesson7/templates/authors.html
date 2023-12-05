@@ -1,0 +1,39 @@
+<!-- Шаблон для добавления и отображения списка авторов -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Все авторы</h1>
+    <form action="/authors" method="post">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.username.label(class='form_input_label') }}
+            {{ form.username(class='form_input') }}
+        </div>
+        <div>
+            {{ form.age.label(class='form_input_label') }}
+            {{ form.age(class='form_input') }}
+        </div>
+        <div>
+            {{ form.bio.label(class='form_input_label') }}
+            {{ form.bio(class='form_input') }}
+        </div>
+        {{ form.submit(value='Добавить') }}
+    </form>
+
+    <ul>
+    {% for author in authors %}
+        <li>
+            <h3>Имя {{ author.username }}</h3>
+            <p>Возраст: {{ author.age }}</p>
+            <p>Биография: {{ author.bio }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
