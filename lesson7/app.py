@@ -78,7 +78,7 @@ def get_authors():
             db.session.commit()
 
     # Отображаем только авторов, чей возраст больше 20
-    # Для этого воспользуемся методом filter(),
+    # Для этого воспользуемся методом запросов filter(),
     # который позволяет использовать условные конструкции.
     authors = Author.query.filter(Author.age > 20).all()
     return render_template('authors.html', authors=authors, form=authorForm)
