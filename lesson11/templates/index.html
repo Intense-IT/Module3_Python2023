@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Главная страница</h1>
+    
+    <form action="/" method="post">
+        <div>{{ form.hidden_tag() }}</div>
+        {% for field in form if field.name != 'csrf_token' %}
+        <div>
+            {{ field.label() }}
+            {{ field() }}
+        </div>
+        {% endfor %}
+    </form>
+    <!-- Кнопка выхода отображается только у авторизированных пользователей. -->
+    {% if current_user.is_authenticated %}
+        <a href="/logout">Выйти {{ current_user.username }}</a>
+    {% endif %}
+</body>
+</html>
