@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{# Однострочный комментарий #}
+{% comment %}
+    Многострочные
+    комментарии
+{% endcomment %}
+
+{% block content %}
+    {% if username == 'Ruslan' %}
+        <h1>Руслан!</h1>
+    {% else %}
+        {% for letter in username %}
+            {% if forloop.first %}
+                <div>Первый!</div>
+            {% elif forloop.last %}
+                <div>Последний!</div>
+            {% endif %}
+            <h1>{{ forloop.counter }} Hello, {{ letter }}</h1>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'greet' %}">Приветствие</a>
+{% endblock %}
