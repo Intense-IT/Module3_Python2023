@@ -1,0 +1,41 @@
+<!-- Дополняем шаблон пагинацией, а именно списком объектов записей и элементы навигации -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Список публикаций</h1>
+    <!-- С помощью цикла перебираем все записи в объекте страницы и
+        выводим данные из каждой записи таким же образом, 
+        как и в случае обычного QuerySet-а. -->
+    {% for post in page_obj %}
+        <h2>Публикация № {{ post.id }}</h2>
+        <div class="post_cont">
+            <div>{{ post.title }}</div>
+            <div>{{ post.text }}</div>
+            <div>{{ post.pub_date }}</div>
+        </div>
+    {% endfor %}
+    <!-- Создаем элемент с навигацией по страницам пагинации и указанием текущей страницы. 
+        Добавляем ссылки на первую, предыдущую, следующую и последнюю страницы (если такие имеются). -->
+    <div class="pagination">
+        <!-- Ссылка на предыдущие страницы -->
+        {% if page_obj.has_previous %}
+            <a href="?page=1">Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <!-- Номер текущей страницы -->
+        <span>{{ page_obj.number }}</span>
+        
+        <!-- Ссылка на следующие страницы -->
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
+        {% endif %}
+    </div>
+</body>
+</html>
