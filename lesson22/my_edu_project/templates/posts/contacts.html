@@ -1,0 +1,20 @@
+<!-- Шаблон страницы, не использующий контекст,
+    для представлений TemplateView и ContactsView -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+</head>
+<body>
+    <h1>Наши контакты</h1>
+    <div>
+        <h2>Магомедов Магомед</h2>
+        <p>Программист</p>
+        <p>8 888 888 88 88</p>
+    </div>
+    <!-- Код для генерации ссылки на список публикаций -->
+    <a href="{% url 'posts:post_list' %}">Список публикаций</a>
+</body>
+</html>
