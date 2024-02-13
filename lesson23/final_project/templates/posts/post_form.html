@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Добавление публикации{% endblock title %}
+{% block content %}
+    <form action="{% url 'posts:post_add' %}" method='post'>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class='form_field'>
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Опубликовать">
+    </form>
+{% endblock content %}

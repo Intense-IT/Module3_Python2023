@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Отдельная публикация{% endblock title %}
+{% block content %}
+    <div>
+        <p>{{ post.title }}</p>
+        <p>{{ post.text }}</p>
+        <p>Автор {{ post.author.username }}</p>
+        <p>{{ post.pub_date }}</p>
+    </div>
+{% endblock content %}

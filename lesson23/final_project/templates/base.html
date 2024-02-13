@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Базовый{% endblock %}</title>
+</head>
+<body>
+    <header>
+        {% comment %}
+            Проходит проверка, авторизирован ли пользователь.
+            Авторизированным пользователям отображается кнопка выхода.
+            Неавторизированным кнопки регистрации и входа.
+        {% endcomment %}
+        {% if user.is_authenticated %}
+            <div>
+                Пользователь {{ user.username }}
+            </div>
+            <form action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Выйти">
+            </form>
+        {% else %}
+            <a href="{% url 'users:register' %}">Регистрация</a>
+            <a href="{% url 'users:login' %}">Войти</a>
+        {% endif %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer></footer>
+</body>
+</html>

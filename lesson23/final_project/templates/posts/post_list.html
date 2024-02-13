@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Список публикаций{% endblock title %}
+{% block content %}
+    {% for post in posts %}
+        <div>
+            {{ post.title }}
+            {{ post.text }}
+        </div>
+    {% endfor %}
+{% endblock content %}
