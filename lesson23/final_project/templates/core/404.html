@@ -1,0 +1,9 @@
+{% comment %} Шаблон для пользовательской ошибки 404 {% endcomment %}
+{% extends "base.html" %}
+
+{% block title %}Ошибка 404{% endblock title %}
+{% block content %}
+    <h1>Страница не найдена</h1>
+    <p>Адреса {{ path }} не существует.</p>
+    <a href="{% url 'index' %}">Возврат на главную</a>
+{% endblock content %}

@@ -7,5 +7,7 @@
         <p>{{ post.text }}</p>
         <p>Автор {{ post.author.username }}</p>
         <p>{{ post.pub_date }}</p>
+        {% comment %} Отображение изображения публикации {% endcomment %}
+        <p><img src={{ post.image.url }} alt=""></p>
     </div>
 {% endblock content %}

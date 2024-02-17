@@ -2,13 +2,16 @@
 
 {% block title %}Добавление публикации{% endblock title %}
 {% block content %}
-    <form action="{% url 'posts:post_add' %}" method='post'>
+    <form action="{% url 'posts:post_add' %}" method='post' enctype="multipart/form-data">
         {% csrf_token %}
         {% for field in form %}
             <div class='form_field'>
                 {{ field.label_tag }}
                 {{ field }}
             </div>
+        {% endfor %}
+        {% for error in form.errors %}
+            <p>{{ error }}</p>
         {% endfor %}
         <input type="submit" value="Опубликовать">
     </form>

@@ -11,6 +11,14 @@
                 {{ field }}
             </div>
         {% endfor %}
+        {% comment %} Вывод ошибок, возникающих при валидации {% endcomment %}
+        {% if form.errors%}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
         <input type="submit" value="Зарегистрироваться">
     </form>
 {% endblock content %}
