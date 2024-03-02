@@ -113,7 +113,7 @@ def index(request):
 #         post = get_object_or_404(Post, pk=pk)
 #         serializer = PostSerializer(post, data=request.data)
 #         if serializer.is_valid():
-#             serializer.save()
+#             serializer.save(user=request.user)
 #             return Response(serializer.data, status=status.HTTP_200_OK)
 #         return Response(
 #             serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -183,6 +183,10 @@ def index(request):
 #     def put(self, request, *args, **kwargs):
 #         return self.update(request, *args, **kwargs)
 
+#     # Метод partial_update обеспечивается миксином UpdateModelMixin
+#     def patch(self, request, *args, **kwargs):
+#         return self.partial_update(request, *args, **kwargs)
+
 #     # Метод destroy обеспечивается миксином DestroyModelMixin
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
@@ -214,6 +218,14 @@ class PostList(generics.ListCreateAPIView):
     # При необходимости здесь же задаются другие атрибуты,
     # будь то класс пагинации или используемые фильтры/сортировки
     # (pagination_class, filter_backends и т.д.).
+
+    # При необходимости в дженериках можно переопределить методы,
+    # связанные с созданием, обновлением или удалением ресурса:
+    # perform_create, perform_update, perform_destroy.
+    # В примере ниже мы при сохранении в БД сериализованных данных добавляем
+    # текущего пользователя в качестве автора.
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 # Класс для работы с отдельным ресурсом.
