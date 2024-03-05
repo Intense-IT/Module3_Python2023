@@ -48,16 +48,21 @@ class PostViewSet(ModelViewSet):
         serializer = PostSerializer(post)
         return Response(serializer.data)
 
+    # Метод получения класса сериализатора для представления.
     def get_serializer_class(self):
         if self.action == 'list':
             return PostListSerializer
         return PostSerializer
 
+    # Метод получения списка элементов для представления.
     def get_queryset(self):
         new_set = Post.objects.filter(pub_date__month__gte=3)
         return new_set
 
 
+# Класс представления на основе ViewSet.
+# Подразумевает обязательное определение всех необходимых методов
+# (list, create, retrieve, update, partial_update, destroy).
 class BasePostViewSet(ViewSet):
 
     def list(self, request):
