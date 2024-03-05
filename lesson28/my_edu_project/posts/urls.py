@@ -15,7 +15,7 @@ router = DefaultRouter()
 
 # Все представления и эндпоинты регистрируются в роутере.
 # В качестве URL-адреса применяется регулярное выражение.
-router.register(r'posts', views.PostViewSet)
+router.register(r'posts', views.PostViewSet, basename='my_posts')
 
 urlpatterns = [
     # Полученный router в итоге добавляется в urlpatterns.
