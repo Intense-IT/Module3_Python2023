@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 # from rest_framework.permissions import IsAuthenticated
+# from rest_framework.authentication import TokenAuthentication
 
 from .models import Post
 from .serializers import PostSerializer
@@ -14,6 +15,8 @@ class PostViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
     # Кастомный класс разрешения.
     permission_classes = (IsAdminOrReadOnly,)
+    # Задание класса аутентификации на уровне представления.
+    # authentication_classes = (TokenAuthentication,)
 
     # get_permissions - метод, позволяющий применять различные разрешения
     # в рамках одного вьюсета.

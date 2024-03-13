@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     # Подключаем приложение Djoser.
     'djoser',
+    'rest_framework_simplejwt',
     'posts',
 ]
 
@@ -132,7 +134,24 @@ REST_FRAMEWORK = {
         'posts.permissions.IsAdminOrReadOnly',
     ],
     # Задание класса аутентификации.
+    # Для использования токенов на основе JWT необходимо установить библиотеку:
+    # pip install djangorestframework-simplejwt
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
+        # Задание встроенной в DRF системы токенов.
+        # 'rest_framework.authentication.TokenAuthentication',
+
+        # Задание системы токенов на основе JWT.
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+# Задание настроек работы приложения Djoser.
+# DJOSER = {
+#     'LOGIN_FIELD': 'email',
+# }
+
+# Задание настроек работы системы токенов JWT.
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
