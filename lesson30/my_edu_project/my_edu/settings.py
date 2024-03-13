@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     # Подключаем приложение Djoser.
     'djoser',
+    # Подключаем систему токенов на основе JWT.
     'rest_framework_simplejwt',
     'posts',
 ]

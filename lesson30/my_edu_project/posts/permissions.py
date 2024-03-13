@@ -5,8 +5,8 @@ from rest_framework import permissions
 
 
 # Кастомные классы разрешений наследуются от базового класса BasePermission.
-# В нем определены два метода,
-# has_permission (разрешение на уровне запроса) и
+# В нем определены два метода:
+# has_permission (разрешение на уровне запроса),
 # has_object_permission (разрешение на уровне объекта).
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
