@@ -3,6 +3,7 @@ from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
+    # Задание значения по умолчанию для скрытого от пользователей поля author.
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
