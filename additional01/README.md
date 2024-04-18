@@ -10,7 +10,7 @@ pip install sqlalchemy
 ### Применение
 Используется отдельный файл (в нашем случае db.py) для настройки SQLAlchemy и создания необходимых классов.
 
-Содержимое файла
+Содержимое файла:
 - Настройка движка SQLAlchemy с указанием типа БД
 ```python
 engine = create_engine(DATABASE_URL)
@@ -27,7 +27,7 @@ session = Session()
 ```python
 Base = declarative_base()
 ```
-- Функция, создающая по хранимым в классе Base метаданным таблиц базу данных:
+- Функция, создающая по хранимым в классе Base метаданным таблиц базу данных
 ```python
 def init_db():
     import alch_app.modeles
@@ -35,7 +35,7 @@ def init_db():
 ```
 Вызвать функцию можно в терминале python.
 
-Теперь можно импортировать объект подключения session в основной файл приложения и через него выполнять все ORM-запросы.
+Теперь можно импортировать объект подключения session в основной файл приложения и через него выполнять все ORM-запросы:
 ```python
 user = session.execute(select(User).filter_by(username='example')).scalar_one()
 ```
